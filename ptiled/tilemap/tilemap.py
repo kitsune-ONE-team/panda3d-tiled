@@ -38,8 +38,7 @@ from arcade.types import RGBA255
 from arcade.types import Color as ArcadeColor
 
 if TYPE_CHECKING:
-    from arcade import DefaultTextureAtlas, Texture
-    from arcade.texture_atlas import TextureAtlasBase
+    from arcade import Texture
 
 from pyglet.math import Vec2
 
@@ -234,7 +233,7 @@ class TileMap:
         hit_box_algorithm: HitBoxAlgorithm | None = None,
         tiled_map: pytiled_parser.TiledMap | None = None,
         offset: Vec2 = Vec2(0, 0),
-        texture_atlas: TextureAtlasBase | None = None,
+        texture_atlas = None,
         lazy: bool = False,
         texture_cache_manager: TextureCacheManager | None = None,
     ) -> None:
@@ -257,12 +256,6 @@ class TileMap:
                 "Attempted to load an infinite TileMap. Arcade currently cannot load "
                 "infinite maps. Disable the infinite map property and re-save the file."
             )
-
-        if not texture_atlas:
-            try:
-                texture_atlas = get_window().ctx.default_atlas
-            except RuntimeError:
-                pass
 
         self._lazy = lazy
         self.texture_cache_manager = texture_cache_manager or TextureCacheManager()
@@ -673,7 +666,7 @@ class TileMap:
     def _process_image_layer(
         self,
         layer: pytiled_parser.ImageLayer,
-        texture_atlas: DefaultTextureAtlas,
+        texture_atlas,
         scaling: float = 1.0,
         use_spatial_hash: bool = False,
         hit_box_algorithm: HitBoxAlgorithm | None = None,
@@ -761,7 +754,7 @@ class TileMap:
     def _process_tile_layer(
         self,
         layer: pytiled_parser.TileLayer,
-        texture_atlas: DefaultTextureAtlas,
+        texture_atlas,
         scaling: float = 1.0,
         use_spatial_hash: bool = False,
         hit_box_algorithm: HitBoxAlgorithm | None = None,
@@ -837,7 +830,7 @@ class TileMap:
     def _process_object_layer(
         self,
         layer: pytiled_parser.ObjectLayer,
-        texture_atlas: DefaultTextureAtlas,
+        texture_atlas,
         scaling: float = 1.0,
         use_spatial_hash: bool = False,
         hit_box_algorithm: HitBoxAlgorithm | None = None,
@@ -1033,7 +1026,7 @@ def load_tilemap(
     use_spatial_hash: bool = False,
     hit_box_algorithm: HitBoxAlgorithm | None = None,
     offset: Vec2 = Vec2(0, 0),
-    texture_atlas: DefaultTextureAtlas | None = None,
+    texture_atlas = None,
     lazy: bool = False,
 ) -> TileMap:
     """
