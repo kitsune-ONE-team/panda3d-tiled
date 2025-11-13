@@ -23,28 +23,20 @@ import pytiled_parser
 import pytiled_parser.tiled_object
 from pytiled_parser import Color
 
+from ptiled.sprite.sprite import Sprite
+from ptiled.sprite_list import SpriteList
 from ptiled.texture_manager import TextureCacheManager
-import arcade
-from arcade import (
-    Sprite,
-    SpriteList,
-    TextureAnimation,
-    TextureAnimationSprite,
-    TextureKeyframe,
-    get_window,
-)
-from arcade.hitbox import HitBoxAlgorithm, RotatableHitBox
-from arcade.types import RGBA255
-from arcade.types import Color as ArcadeColor
+from panda3d.core import LColor as ArcadeColor
 
 if TYPE_CHECKING:
-    from arcade import Texture
+    from panda3d.core import Texture
 
-from pyglet.math import Vec2
+from panda3d.core import Vec2
 
-from arcade.math import rotate_point
-from arcade.resources import resolve
-from arcade.types import Point2, TiledObject
+from ptiled.math import rotate_point
+from ptiled.resources import resolve
+from panda3d.core import Point2
+from ptiled.types import TiledObject
 
 _FLIPPED_HORIZONTALLY_FLAG = 0x80000000
 _FLIPPED_VERTICALLY_FLAG = 0x40000000
