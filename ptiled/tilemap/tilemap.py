@@ -23,6 +23,7 @@ import pytiled_parser
 import pytiled_parser.tiled_object
 from pytiled_parser import Color
 
+from ptiled.texture_manager import TextureCacheManager
 import arcade
 from arcade import (
     Sprite,
@@ -235,7 +236,7 @@ class TileMap:
         offset: Vec2 = Vec2(0, 0),
         texture_atlas: TextureAtlasBase | None = None,
         lazy: bool = False,
-        texture_cache_manager: arcade.TextureCacheManager | None = None,
+        texture_cache_manager: TextureCacheManager | None = None,
     ) -> None:
         if not map_file and not tiled_map:
             raise AttributeError(
@@ -264,7 +265,7 @@ class TileMap:
                 pass
 
         self._lazy = lazy
-        self.texture_cache_manager = texture_cache_manager or arcade.texture.default_texture_cache
+        self.texture_cache_manager = texture_cache_manager or TextureCacheManager()
 
         # Set Map Attributes
         self.width = self.tiled_map.map_size.width
