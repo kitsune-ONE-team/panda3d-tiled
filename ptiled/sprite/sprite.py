@@ -36,6 +36,8 @@ class Sprite(BasicSprite):
     ) -> None:
         if isinstance(path_or_texture, p3d.Texture):
             _texture = path_or_texture
+        elif isinstance(path_or_texture, p3d.PNMImage):
+            _texture = path_or_texture
         elif isinstance(path_or_texture, str | Path):
             _texture = TextureCacheManager().load_or_get_texture(path_or_texture)
         super().__init__(
