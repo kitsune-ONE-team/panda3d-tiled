@@ -7,7 +7,7 @@ import subprocess
 if __name__ == "__main__":
     setuptools.setup(
         name='panda3d-tiled',
-        version='0.0.1',
+        version='0.0.2',
         description='Tiled importer for Panda3D',
         long_description='Python library for loading Tiled maps into Panda3D',
         url='https://github.com/kitsune-ONE-team/panda3d-tiled',

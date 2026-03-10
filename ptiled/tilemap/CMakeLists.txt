@@ -1,0 +1,13 @@
+set(TILEMAP_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/__init__.py
+    ${CMAKE_CURRENT_SOURCE_DIR}/tilemap.py
+)
+
+install(
+    FILES
+    ${TILEMAP_FILES}
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/ptiled/tilemap
+    PERMISSIONS
+    OWNER_READ OWNER_WRITE
+    GROUP_READ
+    WORLD_READ)

@@ -1,0 +1,14 @@
+set(SPRITE_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/__init__.py
+    ${CMAKE_CURRENT_SOURCE_DIR}/base.py
+    ${CMAKE_CURRENT_SOURCE_DIR}/sprite.py
+)
+
+install(
+    FILES
+    ${SPRITE_FILES}
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/ptiled/sprite
+    PERMISSIONS
+    OWNER_READ OWNER_WRITE
+    GROUP_READ
+    WORLD_READ)
