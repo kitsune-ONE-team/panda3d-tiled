@@ -19,6 +19,13 @@ Features
 * supports object layers
 
 
+Unsupported Features
+--------------------
+
+* image layers
+* animations
+
+
 Requirements
 ------------
 

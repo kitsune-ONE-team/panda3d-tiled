@@ -38,12 +38,14 @@ class BasicSprite:
         self._visible = bool(visible)
         self._color: p3d.LColor = p3d.LColor(1, 1, 1, 1)
 
-        cm = p3d.CardMaker(texture.get_name())
+        name = texture.get_name() if hasattr(texture, 'get_name') else str(texture)
+        cm = p3d.CardMaker(name)
         cm.set_frame(-width / 2, width / 2, -height / 2, height / 2)
         self.nodepath = p3d.NodePath(cm.generate())
         self.nodepath.set_pos(self._position[0], 0, self._position[1])
-        self.nodepath.set_texture(texture)
         self.nodepath.set_transparency(p3d.TransparencyAttrib.M_alpha, 1)
+        if isinstance(texture, p3d.Texture):
+            self.nodepath.set_texture(texture)
 
         self._angle = 0.0
 
