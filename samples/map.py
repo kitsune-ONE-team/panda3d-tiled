@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This sample shows how to load a tilemap from a json file.
+It creates a scene from the tilemap, and lets you move.
+"""
 import os
 import sys
 
@@ -19,6 +23,7 @@ class Sample(ShowBase):
             framebuffer-alpha f
             show-frame-rate-meter t
             textures-power-2 f
+            background-color 0 0 0
         ''')
         super().__init__()
 
@@ -72,6 +77,7 @@ class Sample(ShowBase):
 
             # get layer's height from "z" property
             z = (layer.properties or {}).get('z', 0) 
+            # z *= 20
 
             # add extra offset for the layers with the same height
             z += zoffset
